@@ -1,0 +1,14 @@
+/* src/App.css */
+.resume-template-default {
+  font-family: Arial, sans-serif;
+}
+
+.resume-template-modern {
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #333;
+}
+
+.resume-template-classic {
+  font-family: 'Times New Roman', serif;
+  color: #000;
+}

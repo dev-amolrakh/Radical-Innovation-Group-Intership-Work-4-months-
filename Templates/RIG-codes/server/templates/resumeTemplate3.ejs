@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %>'s Resume</title>
+    <style>
+        /* Styles based on the provided image */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .template-container {
+            max-width: 800px;
+            /* margin: 40px auto; */
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+        }
+        .header-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header-section h1 {
+            color: <%= colorTheme %>;
+            margin: 0; 
+            font-size: 36px;
+            font-weight: 700;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #000;
+            margin: 0; 
+            padding: 0; 
+        }
+        .contact-info p {
+            margin: 0; 
+            padding-bottom: 0;
+            padding-top: 0;
+            line-height: 0.75;
+        }
+        .section-title {
+            color: <%= colorTheme %>;
+            border-bottom: 2px solid <%= colorTheme %>;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .item {
+            margin-bottom: 20px;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .item-header span:last-child {
+            color: #000;
+        }
+        .item-content {
+            color: #000;
+            font-size: 14px;
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;    
+            gap: 10px;
+        }
+        .skill-tag {
+            border: 1px solid <%= colorTheme %>;
+            color:  <%= colorTheme %>;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="template-container">
+        <div class="header-section">
+            <h1><%= name %></h1>
+            <div class="contact-info">
+                <% if (email && email.trim() !== '') { %><p><%= email %></p><% } %>
+                <% if (phone && phone.trim() !== '') { %><p><%= phone %></p><% } %>
+                <% if (location && location.trim() !== '') { %><p><%= location %></p><% } %>
+                <% if (linkedin && linkedin.trim() !== '') { %><p>LinkedIn: <%= linkedin %></p><% } %>
+                <% if (portfolio && portfolio.trim() !== '') { %><p>Portfolio: <%= portfolio %></p><% } %>
+            </div>
+        </div>
+
+        <% if (summary && summary.trim() !== '') { %>
+        <div class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="item-content"><%= summary %></p>
+        </div>
+        <% } %>
+
+        <% if (qualifications && qualifications.length > 0) { %>
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            <% qualifications.forEach(function(qual) { %>
+                <div class="item">
+                    <div class="item-header">
+                        <span><%= qual.degree %></span>
+                        <span><%= qual.percentage %></span>
+                    </div>
+                    <div class="item-content"><%= qual.institute %></div>
+                </div>
+            <% }); %>
+        </div>
+        <% } %>
+
+        
+        <% if (skills && skills.length > 0) { %>
+            <div class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-container">
+                    <% skills.forEach(function(skill) { %>
+                        <span class="skill-tag"><%= skill %></span>
+                    <% }); %>
+                </div>
+            </div>
+        <% } %>
+
+        <% if (experience && experience.length > 0) { %>
+        <div class="section">
+            <h2 class="section-title">Experience</h2>
+            <% experience.forEach(function(exp) { %>
+                <div class="item">
+                    <div class="item-header">
+                        <span><%= exp.position %></span>
+                        <span><%= exp.duration %></span>
+                    </div>
+                    <div class="item-content"><%= exp.company %></div>
+                    <ul>
+                        <% exp.details.forEach(function(detail) { %>
+                            <li class="item-content"><%= detail %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% }); %>
+        </div>
+        <% } %>
+
+        <% if (projects && projects.length > 0) { %>
+        <div class="section">
+            <h2 class="section-title">Projects</h2>
+            <% projects.forEach(function(proj) { %>
+                <div class="item">
+                    <div class="item-header">
+                        <span><%= proj.title %></span>
+                    </div>
+                    <ul>
+                        <% proj.description.forEach(function(desc) { %>
+                            <li class="item-content"><%= desc %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% }); %>
+        </div>
+        <% } %>
+
+        <% if (optionalDetails && optionalDetails.length > 0) { %>
+        <div class="section">
+            <h2 class="section-title">Additional Information</h2>
+            <% optionalDetails.forEach(function(detail) { %>
+                <p class="item-content"><%= detail %></p>
+            <% }); %>
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>

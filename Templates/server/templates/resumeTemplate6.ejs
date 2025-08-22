@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %>'s Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 30px;
+            background-color: <%= colorTheme %>15;
+            min-height: 100vh;
+        }
+        .template-container {
+            max-width: 800px;
+            margin: 0 ;
+            /* padding: 40px; */
+            position: relative;
+            min-height: 100vh;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .name {
+            color: <%= colorTheme %>;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .contact-info {
+            font-size: 16px;
+            color: #000;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .contact-info span {
+            position: relative;
+        }
+        .contact-info span:not(:last-child):after {
+            content: "|";
+            margin-left: 10px;
+        }
+        .summary {
+            margin: 10px 0;
+            color: #000;
+            font-size: 16px;
+            line-height: 1.6;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .summary:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5px;
+            right: 20px;
+            height: 2px;
+            background-color: <%= colorTheme %>;
+        }
+        .section {
+            margin: 20px 0;  /* Reduced bottom margin */
+            position: relative;
+            padding: 10px 20px 10px;  /* Increased bottom padding before the line */
+            border-radius: 5px;
+        }
+        .section:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background-color: <%= colorTheme %>;
+        }
+        .section:last-child:after {
+            display: none;
+        }
+        .section-title {
+            color: <%= colorTheme %>;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .qualification-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .degree {
+            font-weight: bold;
+            color: #000;
+        }
+        .institute {
+            color: #000;
+            font-size: 14px;
+        }
+        .percentage {
+            color: #000;
+            font-weight: bold;
+        }
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .position {
+            font-weight: bold;
+            color: #000;
+        }
+        .company {
+            color: #000;
+            font-size: 14px;
+        }
+        .duration {
+            color: #000;
+        }
+        .experience-details {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 10px 0;
+        }
+        .experience-details li {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .experience-details li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #000;
+        }
+        .project-item {
+            margin-bottom: 15px;
+        }
+        .project-title {
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        .project-details {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 5px 0;
+        }
+        .project-details li {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .project-details li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #000;
+        }
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .skill-item {
+            color: #000;
+            font-size: 14px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .skill-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #000;
+        }
+        .additional-info {
+            color: #000;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of the HTML remains the same -->
+    <div class="template-container">
+        <div class="background-gradient"></div>
+        <div class="content">
+            <div class="header">
+                <div class="name"><%= name %></div>
+                <div class="contact-info">
+                    <span><%= email %></span>
+                    <span><%= phone %></span>
+                    <span><%= linkedin %></span>
+                    <span><%= portfolio %></span>
+                    <span><%= location %></span>
+                </div>
+                <div class="summary"><%= summary %></div>
+            </div>
+
+            <% if (qualifications && qualifications.length > 0) { %>
+            <div class="section">
+                <div class="section-title">Qualifications</div>
+                <% qualifications.forEach(function(qual) { %>
+                <div class="qualification-item">
+                    <div>
+                        <div class="degree"><%= qual.degree %></div>
+                        <div class="institute"><%= qual.institute %></div>
+                    </div>
+                    <div class="percentage"><%= qual.percentage %></div>
+                </div>
+                <% }); %>
+            </div>
+            <% } %>
+
+            <% if (experience && experience.length > 0) { %>
+            <div class="section">
+                <div class="section-title">Experience</div>
+                <% experience.forEach(function(exp) { %>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="position"><%= exp.position %></div>
+                            <div class="company"><%= exp.company %></div>
+                        </div>
+                        <div class="duration"><%= exp.duration %></div>
+                    </div>
+                    <ul class="experience-details">
+                        <% exp.details.forEach(function(detail) { %>
+                        <li><%= detail %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+                <% }); %>
+            </div>
+            <% } %>
+
+            <% if (projects && projects.length > 0) { %>
+            <div class="section">
+                <div class="section-title">Projects</div>
+                <% projects.forEach(function(proj) { %>
+                <div class="project-item">
+                    <div class="project-title"><%= proj.title %></div>
+                    <ul class="project-details">
+                        <% proj.description.forEach(function(desc) { %>
+                        <li><%= desc %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+                <% }); %>
+            </div>
+            <% } %>
+
+            <% if (skills && skills.length > 0) { %>
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="skills-container">
+                    <% skills.forEach(function(skill) { %>
+                    <div class="skill-item"><%= skill %></div>
+                    <% }); %>
+                </div>
+            </div>
+            <% } %>
+
+            <% if (optionalDetails && optionalDetails.length > 0) { %>
+            <div class="section">
+                <div class="section-title">Additional Information</div>
+                <% optionalDetails.forEach(function(detail) { %>
+                <div class="additional-info"><%= detail %></div>
+                <% }); %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

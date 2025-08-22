@@ -1,0 +1,181 @@
+.App {
+    text-align: center;
+    font-family: Arial Rounded MT Bold, sans-serif;
+    background-color: #1995AD;
+    height: 3050px;
+  }
+  
+  header h1 {
+    color: #ffffff;
+    font-size: 2.5em;
+    margin: 0px;
+    padding: 20px;
+  }
+  
+  header p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    font-size: large;
+    word-spacing: 6px;
+    color: #ffffff;
+    margin: auto;
+    width: 1000px;
+    text-align: left;
+  }
+  .img1{
+    width: 1000px;
+    margin: auto;
+  }
+  .p2{
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  .project-phases {
+    margin: 20px 0;
+    width: 1000px;
+    margin: auto;
+  }
+  
+  .project-phases h2 {
+    font-size: 1.5em;
+    color: #ffffff;
+  }
+  
+  .phase{
+    width: 1000px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .phase1{
+    padding-top: 50px;
+    text-align: start;
+    width: 450px;
+  }
+  .phase1 ul{
+    color: white;
+    line-height: 1.5;
+    padding-left: 15px;
+  }
+  .phase2{
+    padding-top: 50px;
+    float: right;
+    text-align: start;
+    width: 450px;
+  }
+  .phase2 ul{
+    color: white;
+    line-height: 1.5;
+    padding-left: 15px;
+  }
+  .img4-lable{
+    position: absolute;
+    color: #ffa200;
+    font-size: 13.5px;
+  }
+  .phase3{
+    padding-top: 50px;
+    text-align: start;
+    width: 450px;
+  }
+  .phase3 ul{
+    color: white;
+    line-height: 1.5;
+    padding-left: 15px;
+  }
+  .file-upload {
+    margin-top: 70px !important;
+    width: 600px;
+    height: 400px;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+  }
+  
+  .file-upload h4 {
+    color: #1995AD;
+    text-align: left;
+    padding: 20px;
+    padding-bottom: 5px;
+  }
+  .file-upload p {
+    color: #1995AD;
+    text-align: left;
+    font-size: 12px;
+    padding-left: 20px;
+  }
+  
+  .file-upload input {
+    margin-top: 10px;
+  }
+  
+  .file-upload button {
+    background-color: #1995AD;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .file-upload button:hover {
+    background-color: #0f9bb7;
+  }
+  
+  /* drag file css */
+  .drag-area {
+    width: 500px;
+    height: 190px;
+    border: 2px dashed #cccccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    transition: background-color 0.3s ease;
+  }
+  .drag-area p{
+    text-align: center;
+    padding: 10px;
+  }
+  .drag-area button{
+    background-color: #1995AD;
+    margin: auto;
+  }
+  .highlight {
+    border-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+  
+  footer{
+    border-top: solid white 1px;
+    margin-top: 80px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .icons{
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+  .icons a{
+    color: white;
+    height: 20px;
+    width: 20px;
+    padding: 8px;
+    margin-top: 80px;
+    justify-content: space-between;
+  }
+  
+  footer div a svg{
+    color: white;
+  }
+  footer p{
+    text-align: left;
+    color: white;
+    font-size: small;
+    padding-left: 10px;
+  }

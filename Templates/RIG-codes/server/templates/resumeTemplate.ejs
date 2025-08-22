@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %>'s Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            font-size: <%= fontSize +4 %>px; 
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 55% 44%;
+            grid-gap: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            max-height: 100%; 
+        }
+        .header h1 {
+            font-size: <%= fontSize + 8 %>px; 
+            color: <%= color %>;
+        }
+        .header p {
+            font-size: <%= fontSize + 2  %>px; 
+            color: #333;
+            margin: 2px 0; 
+            line-height: 1.2; 
+        }
+        .section-title {
+            font-size: <%= fontSize + 2 %>px;
+            color: <%= color %>;
+            border-bottom: 1px solid <%= color %>;
+        }
+        .list-item {
+            font-size: <%= fontSize + 2 %>px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .skill-item {
+            background-color: #f0f8ff;
+            border: 1px solid <%= color %>;;
+            border-radius: 5px;
+            padding: 3px 8px;
+            font-size: <%= fontSize + 2  %>px;
+        }
+        @media print {
+            @page {
+                margin: 10mm;
+                size: A4;
+            }
+            body {
+                font-size: <%= fontSize + 2 %>px;
+            }
+        }
+    </style>
+</head>
+<body style="font-size: <%= fontSize + 2 %>px;">
+    <div class="container">
+
+        <div class="left-column">
+
+            <div class="header">
+                <h1><%= name %></h1>
+                <% if (email && email.trim() !== '') { %><p><%= email %></p><% } %>
+                <% if (phone && phone.trim() !== '') { %><p><%= phone %></p><% } %>
+                <% if (location && location.trim() !== '') { %><p><%= location %></p><% } %>
+                <% if (linkedin && linkedin.trim() !== '') { %><p>LinkedIn: <%= linkedin %></p><% } %>
+                <% if (portfolio && portfolio.trim() !== '') { %><p>Portfolio: <%= portfolio %></p><% } %>
+            </div>
+
+            <% if (experience && experience.length > 0) { %>
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <% experience.forEach(function(exp) { %>
+                    <div>
+                        <strong><%= exp.position %></strong> - <%= exp.company %><br>
+                        <small><%= exp.duration %></small>
+                        <ul>
+                            <% exp.details.forEach(function(detail) { %>
+                                <li class="list-item"><%= detail %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                <% }); %>
+            </div>
+            <% } %>
+
+            <% if (projects && projects.length > 0) { %>
+            <div class="section">
+                <h2 class="section-title">Projects</h2>
+                <% projects.forEach(function(proj) { %>
+                    <div>
+                        <strong><%= proj.title %></strong>
+                        <ul>
+                            <% proj.description.forEach(function(desc) { %>
+                                <li class="list-item"><%= desc %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                <% }); %>
+            </div>
+            <% } %>
+        </div>
+
+        <div class="right-column">
+            <% if (summary && summary.trim() !== '') { %>
+            <div class="section">
+                <h2 class="section-title">Summary</h2>
+                <p style="font-size: <%= fontSize + 2 %>px;"><%= summary %></p>
+            </div>
+            <% } %>
+
+            <% if (qualifications && qualifications.length > 0) { %>
+            <div class="section">
+                <h2 class="section-title">Qualifications</h2>
+                <% qualifications.forEach(function(qual) { %>
+                    <div>
+                        <strong style="font-size: <%= fontSize + 2 %>px;"><%= qual.degree %></strong>
+                        <p style="font-size: <%= fontSize + 2 %>px;"><%= qual.institute %> - <%= qual.percentage %></p>
+                    </div>
+                <% }); %>
+            </div>
+            <% } %>
+
+            <% if (skills && skills.length > 0) { %>
+            <div class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills">
+                    <% skills.forEach(function(skill) { %>
+                        <span class="skill-item"><%= skill %></span>
+                    <% }); %>
+                </div>
+            </div>
+            <% } %>
+
+            <% if (optionalDetails && optionalDetails.length > 0) { %>
+            <div class="section">
+                <h2 class="section-title">Additional Information</h2>
+                <ul>
+                    <% optionalDetails.forEach(function(detail) { %>
+                        <li class="list-item"><%= detail %></li>
+                    <% }); %>
+                </ul>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
